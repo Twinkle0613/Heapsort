@@ -144,7 +144,7 @@ void test_QueueArr_given_15_size_of_array_contair_same_value(void){
 
 
 
-  int Arr[] = {12,23,13,14,21,3,56,1,03,02,89,76,11,233,0};
+  int Arr[] = {12,23,13,14,21,3,56,1,4,02,89,76,11,233,0};
 
   int size = sizeof(Arr)/sizeof(0);
 
