@@ -1,7 +1,7 @@
 #include "HeapSort.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <limits.h>
 
 /**
  * In this project, the Finite State Machine(FSM) that used to design the logic for getToken(...) function
@@ -113,24 +113,26 @@
   // printf("sizeof of parameter: %d\n", (int) sizeof(intArray));
 
 // }
-#define isNULL(x)                  (x == '\0')
-#define rightSmallerleft(y,x)       (y[getRightchild(x+1)-1] < y[getLeftchild(x+1)-1])
 
-#define swapForSelfLargerRightchild(Arr,index,size) {                                                            \
-                   if( Arr[getRightchild(index+1)-1] < Arr[index] && getRightchild(index+1)-1 < size)            \
-                   {                                                                                            \
-                      printf("self(%d) change to childR(%d)\n",Arr[index],Arr[getRightchild(index+1)-1]);       \
-                      swap(&Arr[getRightchild(index+1)-1],&Arr[index]);                                         \
-                   }                                                                                            \
+
+#define isNULL(x)                  (x == '\0')
+#define leftChildLargerRightChild(Arr,index)    (Arr[getRightchild(index+1)-1] < Arr[getLeftchild(index+1)-1])
+
+#define swapForSelfLargerRightchild(Arr,index,size) {                                                               \
+                   if( Arr[getRightchild(idx(index))-1] < Arr[index] && getRightchild(idx(index))-1 < size)         \
+                   {                                                                                                \
+                      printf("self(%d) change to Rightchild(%d)\n",Arr[index],Arr[getRightchild(idx(index))-1]);    \
+                      swap(&Arr[getRightchild(idx(index))-1],&Arr[index]);                                          \
+                   }                                                                                                \
                                                     }
 
                                                     
-#define swapForSelfLargerLetfchild(Arr,index,size) {                                                            \
-                   if( Arr[getLeftchild(index+1)-1] < Arr[index] && getLeftchild(index+1)-1 < size)             \
-                   {                                                                                            \
-                      printf("self(%d) change to childR(%d)\n",Arr[index],Arr[getLeftchild(index+1)-1]);       \
-                      swap(&Arr[getLeftchild(index+1)-1],&Arr[index]);                                         \
-                   }                                                                                            \
+#define swapForSelfLargerLetfchild(Arr,index,size) {                                                                \
+                   if( Arr[getLeftchild(idx(index))-1] < Arr[index] && getLeftchild(idx(index))-1 < size)           \
+                   {                                                                                                \
+                      printf("self(%d) change to Leftchild(%d)\n",Arr[index],Arr[getLeftchild(idx(index))-1]);      \
+                      swap(&Arr[getLeftchild(idx(index))-1],&Arr[index]);                                           \
+                   }                                                                                                 \
                                                     }
 int getParents(int value){
   return value/2;
@@ -156,9 +158,7 @@ void swap(int* value1, int* value2){
 }
 
 int countArrSize(int* Arr[]){
-  
   return (sizeof(Arr)/sizeof(Arr[0]));
-  
 }
 
 void swapForParentLargerChild(int Arr[],int index){
@@ -170,6 +170,7 @@ void swapForParentLargerChild(int Arr[],int index){
         storeIndex = parent-1;
       }
 }
+
 void printArr(int Arr[], int size){
   int i;
   for(i = 0 ; i < size ; i ++){
@@ -178,31 +179,53 @@ void printArr(int Arr[], int size){
   printf("\n");
 }
 
-void QueueArr(int Arr[], int index, int size){
+void manageArr(int Arr[], int index, int size){
   printf("----------------------\n");
   printArr(Arr, size);
-  if( index+1 > size ){
+  if( idx(index) > size ){
    return ;
   }
   printf("Arr[%d],RealPosition = %d\n",index,index+1);
-  if(Arr[getRightchild(index+1)-1] < Arr[getLeftchild(index+1)-1] ){
-   swapForSelfLargerRightchild(Arr,index,size);
-   // if( Arr[getRightchild(index+1)-1] < Arr[index] && getLeftchild(index+1)-1 < size){
-       // printf("self(%d) change to childR(%d)\n",Arr[index],Arr[getRightchild(index+1)-1]);
-       // swap(&Arr[getRightchild(index+1)-1],&Arr[index]);
-    // }   
-       swapForParentLargerChild(Arr,index);
-    
-  }else {
-    swapForSelfLargerLetfchild(Arr,index,size)
-    // if( Arr[getLeftchild(index+1) - 1] < Arr[index] && getLeftchild(index+1)-1 < size){
-      // printf("self(%d) change to childL(%d)\n",Arr[index],Arr[getLeftchild(index+1)-1]);
-      // swap(&Arr[getLeftchild(index+1) - 1],&Arr[index]);
-    // }
-      swapForParentLargerChild(Arr,index);
-  }
+  leftChildLargerRightChild(Arr,index)?                                 \
+  (swapForSelfLargerRightchild(Arr,index,size)):(swapForSelfLargerLetfchild(Arr,index,size));
+  swapForParentLargerChild(Arr,index);
+  manageArr(Arr,++index,size);
+}
 
-  QueueArr(Arr,++index,size);
+ 
+void swapSelfandChild(int Arr[], int index, int size){
+  printf("idx(index) = %d\n",idx(index));
+  if( (getLeftchild(idx(index)) > size) && (getRightchild(idx(index)) > size)){
+   return ;
+  }
+  if(leftChildLargerRightChild(Arr,index) && getRightchild(idx(index)) <= size){
+    printf("self(%d) change to rightChild[%d](%d)\n",Arr[index],getRightchild(idx(index)),Arr[getRightchild(idx(index))-1]);
+    swap(&Arr[getRightchild(idx(index))-1],&Arr[index]);
+    index = getRightchild(idx(index))-1;
+  }else{
+    printf("self(%d) change to leftChild[%d](%d)\n",Arr[index],getLeftchild(idx(index)),Arr[getLeftchild(idx(index))-1]);
+    swap(&Arr[getLeftchild(idx(index))-1],&Arr[index]);
+    index = getLeftchild(idx(index))-1;
+  }
+  swapSelfandChild(Arr,index,size);
+}
+  
+#define startFormtopRoot 0
+ 
+void sortArr(int newArr[], int Arr[],int index,int size){
+   
+  if( idx(index) > size ){
+   return ;
+  }
+    swap(&Arr[startFormtopRoot],&newArr[index]);
+    Arr[startFormtopRoot] = INT_MAX;
+    swapSelfandChild(Arr,startFormtopRoot,size);
+    sortArr(newArr,Arr,++index,size);
 }
 
 
+void heapSort(int Arr[],int newArr[],int arrSize){
+  manageArr(Arr,startFormtopRoot,arrSize);
+  sortArr(newArr,Arr,startFormtopRoot,arrSize);
+  printArr(newArr, arrSize);
+}

@@ -3,8 +3,8 @@
   :path: test
   :file: test_HeapSort.c
 :successes:
-- :test: test_QueueArr_given_15_size_of_array_contair_same_value
-  :line: 74
+- :test: test_heapSort
+  :line: 175
   :message: ''
 :failures: []
 :ignores: []
@@ -14,69 +14,59 @@
   :failed: 0
   :ignored: 0
 :stdout:
-- size = 15
-- "(12) (23) (13) (14) (21) (3) (56) (1) (4) (2) (89) (76) (11) (233) (0) "
 - "----------------------"
-- "(12) (23) (13) (14) (21) (3) (56) (1) (4) (2) (89) (76) (11) (233) (0) "
+- "(12) (23) (13) (14) (21) (1) "
 - Arr[0],RealPosition = 1
 - "----------------------"
-- "(12) (23) (13) (14) (21) (3) (56) (1) (4) (2) (89) (76) (11) (233) (0) "
+- "(12) (23) (13) (14) (21) (1) "
 - Arr[1],RealPosition = 2
-- self(23) change to childR(14)
+- self(23) change to Leftchild(14)
 - "----------------------"
-- "(12) (14) (13) (23) (21) (3) (56) (1) (4) (2) (89) (76) (11) (233) (0) "
+- "(12) (14) (13) (23) (21) (1) "
 - Arr[2],RealPosition = 3
-- self(13) change to childR(3)
-- self(3) change to Parent(12)
+- self(13) change to Leftchild(1)
+- self(1) change to Parent(12)
 - "----------------------"
-- "(3) (14) (12) (23) (21) (13) (56) (1) (4) (2) (89) (76) (11) (233) (0) "
+- "(1) (14) (12) (23) (21) (13) "
 - Arr[3],RealPosition = 4
-- self(23) change to childR(1)
-- self(1) change to Parent(14)
-- self(1) change to Parent(3)
 - "----------------------"
-- "(1) (3) (12) (14) (21) (13) (56) (23) (4) (2) (89) (76) (11) (233) (0) "
+- "(1) (14) (12) (23) (21) (13) "
 - Arr[4],RealPosition = 5
-- self(21) change to childR(2)
-- self(2) change to Parent(3)
 - "----------------------"
-- "(1) (2) (12) (14) (3) (13) (56) (23) (4) (21) (89) (76) (11) (233) (0) "
+- "(1) (14) (12) (23) (21) (13) "
 - Arr[5],RealPosition = 6
-- self(13) change to childR(11)
-- self(11) change to Parent(12)
 - "----------------------"
-- "(1) (2) (11) (14) (3) (12) (56) (23) (4) (21) (89) (76) (13) (233) (0) "
-- Arr[6],RealPosition = 7
-- self(56) change to childR(0)
-- self(0) change to Parent(11)
-- self(0) change to Parent(1)
-- "----------------------"
-- "(0) (2) (1) (14) (3) (12) (11) (23) (4) (21) (89) (76) (13) (233) (56) "
-- Arr[7],RealPosition = 8
-- "----------------------"
-- "(0) (2) (1) (14) (3) (12) (11) (23) (4) (21) (89) (76) (13) (233) (56) "
-- Arr[8],RealPosition = 9
-- self(4) change to Parent(14)
-- "----------------------"
-- "(0) (2) (1) (4) (3) (12) (11) (23) (14) (21) (89) (76) (13) (233) (56) "
-- Arr[9],RealPosition = 10
-- "----------------------"
-- "(0) (2) (1) (4) (3) (12) (11) (23) (14) (21) (89) (76) (13) (233) (56) "
-- Arr[10],RealPosition = 11
-- "----------------------"
-- "(0) (2) (1) (4) (3) (12) (11) (23) (14) (21) (89) (76) (13) (233) (56) "
-- Arr[11],RealPosition = 12
-- "----------------------"
-- "(0) (2) (1) (4) (3) (12) (11) (23) (14) (21) (89) (76) (13) (233) (56) "
-- Arr[12],RealPosition = 13
-- "----------------------"
-- "(0) (2) (1) (4) (3) (12) (11) (23) (14) (21) (89) (76) (13) (233) (56) "
-- Arr[13],RealPosition = 14
-- "----------------------"
-- "(0) (2) (1) (4) (3) (12) (11) (23) (14) (21) (89) (76) (13) (233) (56) "
-- Arr[14],RealPosition = 15
-- "----------------------"
-- "(0) (2) (1) (4) (3) (12) (11) (23) (14) (21) (89) (76) (13) (233) (56) "
-- "(0) (2) (1) (4) (3) (12) (11) (23) (14) (21) (89) (76) (13) (233) (56) "
-- No.8
+- "(1) (14) (12) (23) (21) (13) "
+- idx(index) = 1
+- self(2147483647) change to rightChild[3](12)
+- idx(index) = 3
+- self(2147483647) change to leftChild[6](13)
+- idx(index) = 6
+- idx(index) = 1
+- self(2147483647) change to rightChild[3](13)
+- idx(index) = 3
+- self(2147483647) change to leftChild[6](2147483647)
+- idx(index) = 6
+- idx(index) = 1
+- self(2147483647) change to leftChild[2](14)
+- idx(index) = 2
+- self(2147483647) change to rightChild[5](21)
+- idx(index) = 5
+- idx(index) = 1
+- self(2147483647) change to leftChild[2](21)
+- idx(index) = 2
+- self(2147483647) change to leftChild[4](23)
+- idx(index) = 4
+- idx(index) = 1
+- self(2147483647) change to leftChild[2](23)
+- idx(index) = 2
+- self(2147483647) change to leftChild[4](2147483647)
+- idx(index) = 4
+- idx(index) = 1
+- self(2147483647) change to leftChild[2](2147483647)
+- idx(index) = 2
+- self(2147483647) change to leftChild[4](2147483647)
+- idx(index) = 4
+- "(1) (12) (13) (14) (21) (23) "
+- "(1) (12) (13) (14) (21) (23) "
 - ''

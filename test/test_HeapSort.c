@@ -2,7 +2,7 @@
 #include "HeapSort.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <limits.h>
 void setUp(void){}
 
 void tearDown(void){}
@@ -47,14 +47,9 @@ void xtest_QueueArr(void){
   int size = sizeof(Arr)/sizeof(0);
   printf("size = %d\n",size);
   int i;
-  for( i = 0 ; i < size ; i ++){
-    printf("[%d] ",Arr[i]);
-  }
-    printf("\n");
-  QueueArr(Arr,0,size);
-  for( i = 0 ; i < size ; i ++){
-    printf("[%d] ",Arr[i]);
-  }
+  printArr(Arr, size);
+  manageArr(Arr,0,size);
+  printArr(Arr, size);
    printf("No.6\n");
 }
 
@@ -65,21 +60,124 @@ void xtest_QueueArr_given_15_size_of_array(void){
   printf("size = %d\n",size);
   int i;
   printArr(Arr, size);
-  QueueArr(Arr,0,size);
+  manageArr(Arr,0,size);
   printArr(Arr, size);
    printf("No.7\n");
   
 }
 
-void test_QueueArr_given_15_size_of_array_contair_same_value(void){
+void xtest_QueueArr_given_15_size_of_array_contair_same_value(void){
  
   int Arr[] = {12,23,13,14,21,3,56,1,4,02,89,76,11,233,0};
   int size = sizeof(Arr)/sizeof(0);
   printf("size = %d\n",size);
   int i;
   printArr(Arr, size);
-  QueueArr(Arr,0,size);
+  manageArr(Arr,0,size);
   printArr(Arr, size);
    printf("No.8\n");
+  
+}
+
+void xtest_QueueArr_given_30_size_of_array_contair_same_value(void){
+ 
+  int Arr[] = {98,78,45,32,12,75,80,21,34,1444,566,23,22,11,55,66,77,88,99,16,24,33,43,233,17,27,38,2,1,0};
+  int size = sizeof(Arr)/sizeof(0);
+  printf("size = %d\n",size);
+  int i;
+  printArr(Arr, size);
+  manageArr(Arr,0,size);
+  printArr(Arr, size);
+  
+   printf("No.9\n");
+  
+}
+
+
+void xtest_swapSelfandChild(void){
+  
+  int Arr[] = {12,23,13,14,21,1};
+  int size = sizeof(Arr)/sizeof(0);
+  printf("size = %d\n",size);
+  int i;
+  printArr(Arr, size);
+  swapSelfandChild(Arr,0,size);
+  printArr(Arr, size);
+   printf("No.10\n");
+  
+}
+
+
+void xtest_swapSelfandChild_given_15_size_of_array(void){
+  
+  int Arr[] = {12,23,13,14,21,3,56,1,4,02,89,76,11,233,0};
+  int size = sizeof(Arr)/sizeof(0);
+  printf("size = %d\n",size);
+  int i;
+  printArr(Arr, size);
+  swapSelfandChild(Arr,0,size);
+  printArr(Arr, size);
+   printf("No.11\n");
+  
+}
+
+void xtest_sortArr(void){
+  
+  int Arr[] = {12,23,13,14,21,1};
+  int size = sizeof(Arr)/sizeof(0);
+  int newArr[size];
+  printf("size = %d\n",size);
+  int i;
+  printArr(Arr, size);
+  manageArr(Arr,0,size);
+  printArr(Arr, size);
+  sortArr(newArr,Arr,0,size);
+  printArr(Arr, size);
+  printArr(newArr, size);
+   printf("No.12\n");
+}
+
+
+void xtest_sortArr_given_15_size_of_array(void){
+  
+  int Arr[] = {12,23,13,14,21,3,56,1,4,02,89,76,11,233,0};
+  int size = sizeof(Arr)/sizeof(0);
+  int newArr[size];
+  printf("size = %d\n",size);
+  int i;
+  printArr(Arr, size);
+  manageArr(Arr,0,size);
+  printArr(Arr, size);
+  sortArr(newArr,Arr,0,size);
+  printArr(Arr, size);
+  printArr(newArr, size);
+   printf("No.12\n");
+}
+
+void xtest_sortArr_given_30_size_of_array(void){
+  
+  int Arr[] = {98,78,45,32,12,75,80,21,34,1444,566,23,22,11,55,66,77,88,99,16,24,33,43,233,17,27,38,2,1,0};
+  int size = sizeof(Arr)/sizeof(0);
+  int newArr[size];
+  printf("size = %d\n",size);
+  int i;
+  printArr(Arr, size);
+  manageArr(Arr,0,size);
+  printArr(Arr, size);
+  sortArr(newArr,Arr,0,size);
+  printArr(Arr, size);
+  printArr(newArr, size);
+   printf("No.12\n");
+}
+
+
+
+void test_heapSort(void){
+  
+  int Arr[] = {12,23,13,14,21,1};
+  int size = sizeof(Arr)/sizeof(0);
+  int newArr[6];
+  heapSort(Arr,newArr,size);
+  printArr(newArr, 6);
   
 }

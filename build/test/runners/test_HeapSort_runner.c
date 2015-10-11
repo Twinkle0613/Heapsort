@@ -30,7 +30,7 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_QueueArr_given_15_size_of_array_contair_same_value(void);
+extern void test_heapSort(void);
 
 
 //=======Test Reset Option=====
@@ -46,7 +46,7 @@ void resetTest(void)
 int main(void)
 {
   UnityBegin("test_HeapSort.c");
-  RUN_TEST(test_QueueArr_given_15_size_of_array_contair_same_value, 74);
+  RUN_TEST(test_heapSort, 175);
 
   return (UnityEnd());
 }
