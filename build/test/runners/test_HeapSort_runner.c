@@ -30,7 +30,22 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
+extern void test_getParents(void);
+extern void test_getLeftchild(void);
+extern void test_getRightchild(void);
+extern void test_swap(void);
+extern void test_QueueArr(void);
+extern void test_QueueArr_given_15_size_of_array(void);
+extern void test_QueueArr_given_30_size_of_array(void);
+extern void test_swapTopChToLastCh(void);
+extern void test_swapTopChToLastCh_given_15_size_of_array(void);
+extern void test_swapHeap(void);
+extern void test_swapHeap_given_15_size_of_array(void);
+extern void test_swapHeap_given_30_size_of_array(void);
 extern void test_heapSort(void);
+extern void test_heapSort_given_15_size_of_array(void);
+extern void test_heapSort_given_30_size_of_array(void);
+extern void test_heapSort_given_15_size_of_array_that_contain_negative_value(void);
 
 
 //=======Test Reset Option=====
@@ -46,7 +61,22 @@ void resetTest(void)
 int main(void)
 {
   UnityBegin("test_HeapSort.c");
+  RUN_TEST(test_getParents, 12);
+  RUN_TEST(test_getLeftchild, 17);
+  RUN_TEST(test_getRightchild, 23);
+  RUN_TEST(test_swap, 28);
+  RUN_TEST(test_QueueArr, 48);
+  RUN_TEST(test_QueueArr_given_15_size_of_array, 64);
+  RUN_TEST(test_QueueArr_given_30_size_of_array, 81);
+  RUN_TEST(test_swapTopChToLastCh, 93);
+  RUN_TEST(test_swapTopChToLastCh_given_15_size_of_array, 108);
+  RUN_TEST(test_swapHeap, 123);
+  RUN_TEST(test_swapHeap_given_15_size_of_array, 140);
+  RUN_TEST(test_swapHeap_given_30_size_of_array, 155);
   RUN_TEST(test_heapSort, 175);
+  RUN_TEST(test_heapSort_given_15_size_of_array, 187);
+  RUN_TEST(test_heapSort_given_30_size_of_array, 198);
+  RUN_TEST(test_heapSort_given_15_size_of_array_that_contain_negative_value, 212);
 
   return (UnityEnd());
 }

@@ -3,70 +3,76 @@
   :path: test
   :file: test_HeapSort.c
 :successes:
+- :test: test_getParents
+  :line: 12
+  :message: ''
+- :test: test_getLeftchild
+  :line: 17
+  :message: ''
+- :test: test_getRightchild
+  :line: 23
+  :message: ''
+- :test: test_swap
+  :line: 28
+  :message: ''
+- :test: test_QueueArr
+  :line: 48
+  :message: ''
+- :test: test_QueueArr_given_15_size_of_array
+  :line: 64
+  :message: ''
+- :test: test_QueueArr_given_30_size_of_array
+  :line: 81
+  :message: ''
+- :test: test_swapTopChToLastCh
+  :line: 93
+  :message: ''
+- :test: test_swapTopChToLastCh_given_15_size_of_array
+  :line: 108
+  :message: ''
+- :test: test_swapHeap
+  :line: 123
+  :message: ''
+- :test: test_swapHeap_given_15_size_of_array
+  :line: 140
+  :message: ''
+- :test: test_swapHeap_given_30_size_of_array
+  :line: 155
+  :message: ''
 - :test: test_heapSort
   :line: 175
+  :message: ''
+- :test: test_heapSort_given_15_size_of_array
+  :line: 187
+  :message: ''
+- :test: test_heapSort_given_30_size_of_array
+  :line: 198
+  :message: ''
+- :test: test_heapSort_given_15_size_of_array_that_contain_negative_value
+  :line: 212
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 1
-  :passed: 1
+  :total: 16
+  :passed: 16
   :failed: 0
   :ignored: 0
 :stdout:
-- "----------------------"
-- "(12) (23) (13) (14) (21) (1) "
-- Arr[0],RealPosition = 1
-- "----------------------"
-- "(12) (23) (13) (14) (21) (1) "
-- Arr[1],RealPosition = 2
-- self(23) change to Leftchild(14)
-- "----------------------"
-- "(12) (14) (13) (23) (21) (1) "
-- Arr[2],RealPosition = 3
-- self(13) change to Leftchild(1)
-- self(1) change to Parent(12)
-- "----------------------"
-- "(1) (14) (12) (23) (21) (13) "
-- Arr[3],RealPosition = 4
-- "----------------------"
-- "(1) (14) (12) (23) (21) (13) "
-- Arr[4],RealPosition = 5
-- "----------------------"
-- "(1) (14) (12) (23) (21) (13) "
-- Arr[5],RealPosition = 6
-- "----------------------"
-- "(1) (14) (12) (23) (21) (13) "
-- idx(index) = 1
-- self(2147483647) change to rightChild[3](12)
-- idx(index) = 3
-- self(2147483647) change to leftChild[6](13)
-- idx(index) = 6
-- idx(index) = 1
-- self(2147483647) change to rightChild[3](13)
-- idx(index) = 3
-- self(2147483647) change to leftChild[6](2147483647)
-- idx(index) = 6
-- idx(index) = 1
-- self(2147483647) change to leftChild[2](14)
-- idx(index) = 2
-- self(2147483647) change to rightChild[5](21)
-- idx(index) = 5
-- idx(index) = 1
-- self(2147483647) change to leftChild[2](21)
-- idx(index) = 2
-- self(2147483647) change to leftChild[4](23)
-- idx(index) = 4
-- idx(index) = 1
-- self(2147483647) change to leftChild[2](23)
-- idx(index) = 2
-- self(2147483647) change to leftChild[4](2147483647)
-- idx(index) = 4
-- idx(index) = 1
-- self(2147483647) change to leftChild[2](2147483647)
-- idx(index) = 2
-- self(2147483647) change to leftChild[4](2147483647)
-- idx(index) = 4
-- "(1) (12) (13) (14) (21) (23) "
-- "(1) (12) (13) (14) (21) (23) "
+- No.1
+- No.2
+- No.3
+- No.4
+- No.6
+- No.7
+- No.9
+- No.10
+- No.11
+- No.12
+- No.13
+- No.14
+- No.15
+- No.16
+- No.17
+- No.18
 - ''
